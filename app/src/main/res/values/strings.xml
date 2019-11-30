@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Wheel Of Fate</string>
+    <string name="btn_schedule">Generate Schedule</string>
+    <string name="txt_morning_shift">Morning</string>
+    <string name="txt_evening_shift">Evening</string>
+    <string name="txt_shift">Shift</string>
+    <string name="txt_day">Day</string>
+    <string name="txt_error">Something wrong happened</string>
+</resources>
