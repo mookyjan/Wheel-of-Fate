@@ -1,8 +1,9 @@
-package com.mudassirkhan.wheeloffate
+package com.mudassirkhan.wheeloffate.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.mudassirkhan.wheeloffate.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

@@ -1,13 +1,9 @@
 package com.mudassirkhan.data.repositories
 
-import android.util.Log
-import com.mudassirkhan.data.UseCaseResult
 import com.mudassirkhan.data.mapper.DataToDomainMapper
-import com.mudassirkhan.data.remote.api.WheelApiService
 import com.mudassirkhan.domain.entity.Engineer
 import com.mudassirkhan.domain.gateway.EngineerGateway
 import io.reactivex.Single
-import io.reactivex.rxkotlin.subscribeBy
 
 class EngineerListRepositoryImpl(private val engineerRepository: EngineerRepository): EngineerGateway {
 
@@ -20,10 +16,6 @@ class EngineerListRepositoryImpl(private val engineerRepository: EngineerReposit
             .doOnError {
                 println("Engineer list error")
             }
-//            .map {
-//                UseCaseResult.Success(it)
-//
-//            }
             .map {
                 it.engineers?.map {
                     mapperEngineer.mapDataToDomainEngineer(it)

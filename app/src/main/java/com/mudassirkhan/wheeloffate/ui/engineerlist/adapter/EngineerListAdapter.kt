@@ -1,4 +1,4 @@
-package com.mudassirkhan.wheeloffate.ui.adapter
+package com.mudassirkhan.wheeloffate.ui.engineerlist.adapter
 
 import android.view.LayoutInflater
 import android.view.View

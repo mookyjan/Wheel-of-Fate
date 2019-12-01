@@ -15,14 +15,17 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
-class ShiftScheduleViewModel @Inject constructor(private val scheduler:Schedulers,
-                                                 private val scheduleListUseCase: GetScheduleListUseCase) : ViewModel() {
+class ShiftScheduleViewModel @Inject constructor(private val scheduleListUseCase: GetScheduleListUseCase) : ViewModel() {
 
 
+    //variable for schedule list
     var scheduleList = ObservableArrayList<Schedule>()
     val compositeDisposable = CompositeDisposable()
-    fun getSchedule(engineerList : List<Engineer>){
 
+    /**
+     * fun to get the schedule
+     */
+    fun getSchedule(engineerList : List<Engineer>){
         scheduleListUseCase.execute(mapPresentationToDomainEngineer(engineerList))
             .subscribeBy(onSuccess = {
                 Timber.d { "schedule list success $it" }
@@ -30,6 +33,11 @@ class ShiftScheduleViewModel @Inject constructor(private val scheduler:Scheduler
             },onError = {
                 Timber.e { "schedule error $it" }
             }).addTo(compositeDisposable)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
     }
 
 }

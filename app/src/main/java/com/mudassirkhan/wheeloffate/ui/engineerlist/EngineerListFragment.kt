@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.mudassirkhan.wheeloffate.MainActivity
+import com.mudassirkhan.wheeloffate.ui.MainActivity
 
 import com.mudassirkhan.wheeloffate.R
 import com.mudassirkhan.wheeloffate.core.Router

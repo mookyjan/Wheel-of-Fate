@@ -14,7 +14,6 @@ abstract class ViewModelFactoryModule {
     abstract fun bindViewModelFactory(viewModelFactory: ViewModelFactory):
             ViewModelProvider.Factory
 
-
     @Binds
     @IntoMap
     @ViewModelKey(EngineerListViewModel::class)
