@@ -4,6 +4,8 @@
 Simple Android Application written in Kotlin.
 This project follows Clean Architecture with MVVM
 
+[here is apk](https://github.com/mookyjan/Wheel-of-Fate/blob/develop_db_branch/screenshots/app-debug.apk)
+
 # Main libraries used
 
 * Data Binding
@@ -12,6 +14,7 @@ This project follows Clean Architecture with MVVM
 * Retrofit2
 * Glide
 * Timber
+* Room
 * Android Architecture component Jetpack
 
 
