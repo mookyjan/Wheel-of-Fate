@@ -28,7 +28,7 @@ and for the simplicity of this project many things have been kept simple
 like 
 * ErrorHandling, 
 * Internet connectivity and 
-* local db to store data locally (Room).
+* local db to store data locally (Room). IT is added in develop_db_branch
 
 comments are written with the function that what it will do.
 
