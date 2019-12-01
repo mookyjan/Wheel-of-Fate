@@ -1,5 +1,9 @@
 package com.mudassirkhan.wheeloffate.di.module
 
+import android.content.Context
+import com.mudassirkhan.data.local.EngineerLocalDataSource
+import com.mudassirkhan.data.local.database.WheelFateDatabase
+import com.mudassirkhan.data.local.dao.EngineerDao
 import com.mudassirkhan.data.mapper.DataToDomainMapper
 import com.mudassirkhan.data.remote.RemoteDataSource
 import com.mudassirkhan.data.remote.api.WheelApiService
@@ -10,6 +14,7 @@ import com.mudassirkhan.domain.gateway.EngineerGateway
 import com.mudassirkhan.domain.gateway.ScheduleGateway
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -22,10 +27,29 @@ class DataModule {
         return RemoteDataSource(wheelApiService)
     }
 
+
+//    @Provides
+//    @Singleton
+//    internal fun provideDatabase(@Named("application.context") context: Context):WheelFateDatabase{
+//        return WheelFateDatabase.newInstance(context)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    internal fun provideEngineerDao(wheelOfFateDatabase: WheelFateDatabase):EngineerDao{
+//        return wheelOfFateDatabase.engineerDao()
+//    }
+
     @Provides
     @Singleton
-    internal fun provideEngineerRepository(remoteDataSource: RemoteDataSource):EngineerRepository{
-        return EngineerRepository(remoteDataSource, DataToDomainMapper())
+    internal fun provideLocalDataSource(engineerDao: EngineerDao):EngineerLocalDataSource{
+        return EngineerLocalDataSource(engineerDao)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideEngineerRepository(remoteDataSource: RemoteDataSource,localEngineerLocalDataSource: EngineerLocalDataSource):EngineerRepository{
+        return EngineerRepository(remoteDataSource,localEngineerLocalDataSource ,DataToDomainMapper())
     }
 
     @Provides
@@ -39,4 +63,17 @@ class DataModule {
     internal fun provideScheduleGateWay(): ScheduleGateway{
         return ScheduleRepositoryImpl()
     }
+
+
+    @Provides
+    @Singleton
+    internal fun provideWheelOfFateDatabaseDatabase(context: Context): WheelFateDatabase {
+
+        return WheelFateDatabase.newInstance(context)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideWheelOfFateDao(wheelOfFateDatabase: WheelFateDatabase): EngineerDao = wheelOfFateDatabase.engineerDao()
+
 }

@@ -15,12 +15,15 @@ class EngineerListRepositoryImpl(private val engineerRepository: EngineerReposit
         return engineerRepository.getEngineerList()
             .doOnError {
                 println("Engineer list error")
+            }.map {
+                println("engineer list $it")
+                mapperEngineer.mapLocalToDomainEngineer(it)
             }
-            .map {
-                it.engineers?.map {
-                    mapperEngineer.mapDataToDomainEngineer(it)
-                }
-            }
+//            .map {
+//                it.engineers?.map {
+//                    mapperEngineer.mapDataToDomainEngineer(it)
+//                }
+//            }
 
     }
 
