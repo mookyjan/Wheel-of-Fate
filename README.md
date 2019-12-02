@@ -3,6 +3,10 @@
 ### Structure of the code ###
 Simple Android Application written in Kotlin.
 This project follows Clean Architecture with MVVM
+ 
+This project currently have two braches.
+master-branch = without local db
+developer_db_branch = with local db (Room)
 
 [here is apk file](https://github.com/mookyjan/Wheel-of-Fate/blob/master/screenshots/app-debug.apk)
 
